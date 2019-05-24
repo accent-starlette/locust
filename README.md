@@ -18,7 +18,7 @@ pip install locust
 
 ## Load Locust With a Test File
 ```bash
-locust -f tests/admin-example.py --host=http://localhost:8000
+locust -f tests/admin_example.py --host=http://localhost:8000
 ```
 
 ## Then Visit

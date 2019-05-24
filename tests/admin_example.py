@@ -5,32 +5,40 @@ class UserBehavior(TaskSet):
 
     @task(1)
     def admin_index(self):
-        self.client.get("/admin")
+        self.client.get("/")
 
     @task(2)
     def list(self):
-        self.client.get("/admin/example/demos")
+        self.client.get("/sqlalchemy/demos")
+
+    @task(1)
+    def list_search(self):
+        self.client.get("/sqlalchemy/demos?search=1")
+
+    @task(1)
+    def list_order(self):
+        self.client.get("/sqlalchemy/demos?order_by=name&order_direction=asc")
 
     @task(1)
     def create_get(self):
-        self.client.get("/admin/example/demos/create")
+        self.client.get("/sqlalchemy/demos/create")
 
     @task(1)
     def create_post(self):
         self.client.post(
-            "/admin/example/demos/create",
+            "/sqlalchemy/demos/create",
             data={"name": "Locust", "description": "Description"}
         )
 
     @task(1)
-    def update_get(self):
-        self.client.get("/admin/example/demos/1/update")
+    def edit_get(self):
+        self.client.get("/sqlalchemy/demos/1/edit")
 
     @task(1)
-    def update_post(self):
+    def edit_post(self):
         self.client.post(
-            "/admin/example/demos/1/update",
-            data={"name": "Record 1", "description": "Description"}
+            "/sqlalchemy/demos/1/edit",
+            data={"name": "Locust", "description": "Description"}
         )
 
 
