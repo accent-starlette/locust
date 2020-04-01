@@ -1,3 +1,4 @@
+from time import time
 from locust import HttpLocust, task, TaskSet
 
 
@@ -27,7 +28,11 @@ class UserBehavior(TaskSet):
     def create_post(self):
         self.client.post(
             "/sqlalchemy/demos/create",
-            data={"name": "Locust", "description": "Description"}
+            data={
+                "name": str(int(time())),
+                "description": "Description",
+                "date": "2021-01-01",
+            }
         )
 
     @task(1)
@@ -38,7 +43,11 @@ class UserBehavior(TaskSet):
     def edit_post(self):
         self.client.post(
             "/sqlalchemy/demos/1/edit",
-            data={"name": "Locust", "description": "Description"}
+            data={
+                "name": str(int(time())),
+                "description": "Description",
+                "date": "2021-01-01",
+            }
         )
 
 
