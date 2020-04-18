@@ -1,4 +1,4 @@
-from locust import HttpLocust, task, TaskSet
+from locust import between, HttpLocust, task, TaskSet
 
 
 class UserBehavior(TaskSet):
@@ -20,5 +20,4 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
-    min_wait = 5000
-    max_wait = 9000
+    wait_time = between(5, 10)
